@@ -23,6 +23,4 @@ network.publish_host: 192.168.0.110
 ...
 {"type": "server", "timestamp": "2019-08-12T15:44:06,265+0000", "level": "INFO", "component": "o.e.t.TransportService", "cluster.name": "es-cluster", "node.name": "es-node1",  "message": "publish_address {192.168.0.110:9300}, bound_addresses {0.0.0.0:9300}"  }
 ...
-``` 
-
-2. 
+```
