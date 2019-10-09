@@ -1,0 +1,23 @@
+version: "3.4"
+services:
+  redis-master2:
+    container_name: rs-master2
+    hostname: rs-master2
+    image: redis:5.0.5
+    restart: always
+    ports:
+      - 7003:7003
+    volumes:
+      - ./redis/redis-master2.conf:/usr/local/etc/redis/redis.conf
+      - ./redis/data/master2:/data
+
+  redis-slave2:
+    container_name: rs-slave2
+    hostname: rs-slave2
+    image: redis:5.0.5
+    restart: always
+    ports:
+      - 7004:7004
+    volumes:
+      - ./redis/redis-slave2.conf:/usr/local/etc/redis/redis.conf
+      - ./redis/data/slave2:/data
