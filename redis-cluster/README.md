@@ -3,35 +3,36 @@
 #### 介绍
 Docker 容器部署实践学习实例集合，仅供学习参考！如有更好的方案和idea，欢迎互相交流！如您觉得该项目对您有所帮助，欢迎点击右上方的Star标记，给予支持！！！谢谢 ~ ~
 
-#### 软件架构
-软件架构说明
+#### 部署问题
+1. redis启动警告: WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
+解决方法: (临时生效命令: sysctl vm.overcommit_memory=1)
+```shell script
+# 1. 修改配置
+[root@es-node3 redis-cluster]# vi /etc/sysctl.conf
+# 2. 添加: vm.overcommit_memory=1
+# 3. 加载配置
+[root@es-node3 redis-cluster]# source /etc/sysctl.conf 
+-bash: vm.max_map_count=262144: command not found
+-bash: vm.overcommit_memory=1: command not found
+```
 
+2. redis启动警告: WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis.
+解决方法:
+```shell script
+# 1. 修改配置
+[root@es-node3 redis-cluster]# vi /etc/rc.local
+# 2. 添加: echo never > /sys/kernel/mm/transparent_hugepage/enabled
+# 3. 加载配置
+[root@es-node3 redis-cluster]# source /etc/rc.local
+```
 
-#### 安装教程
+3. 创建Docker Redis容器网络
+```shell script
+# 创建网络
+docker network create --subnet=172.20.0.0/16 redis-cluster
+# 检查网络
+docker network inspect redis-cluster
+```
 
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 使用说明
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 参与贡献
-
-1. Fork 本仓库
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
-
-
-#### 码云特技
-
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+#### redis 节点集群
+docker run --rm -it zvelo/redis-trib create --replicas 1 172.20.0.5:7001 172.20.0.5:7002 192.168.0.6:7003 192.168.0.6:7004 192.168.0.7:7005 192.168.0.7:7006

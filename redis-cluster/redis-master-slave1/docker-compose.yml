@@ -6,6 +6,7 @@ services:
     restart: always
     ports:
       - 7001:7001
+#      - 17001:17001
     volumes:
       - ./redis/redis-7001.conf:/usr/local/etc/redis/redis.conf
       - ./redis/data/7001:/data
@@ -17,6 +18,7 @@ services:
     restart: always
     ports:
       - 7002:7002
+#      - 17002:17002
     volumes:
       - ./redis/redis-7002.conf:/usr/local/etc/redis/redis.conf
       - ./redis/data/7002:/data
