@@ -1,23 +1,25 @@
 version: "3.4"
 services:
-  redis-master3:
-    container_name: rs-master3
-    hostname: rs-master3
+  redis-7005:
+    container_name: redis-7005
     image: redis:5.0.5
     restart: always
     ports:
       - 7005:7005
+#      - 17005:17005
     volumes:
-      - ./redis/redis-master3.conf:/usr/local/etc/redis/redis.conf
-      - ./redis/data/master3:/data
+      - ./redis/redis-7005.conf:/usr/local/etc/redis/redis.conf
+      - ./redis/data/7005:/data
+    command: redis-server /usr/local/etc/redis/redis.conf
 
-  redis-slave3:
-    container_name: rs-slave3
-    hostname: rs-slave3
+  redis-7006:
+    container_name: redis-7006
     image: redis:5.0.5
     restart: always
     ports:
       - 7006:7006
+#      - 17006:17006
     volumes:
-      - ./redis/redis-slave3.conf:/usr/local/etc/redis/redis.conf
-      - ./redis/data/slave3:/data
+      - ./redis/redis-7006.conf:/usr/local/etc/redis/redis.conf
+      - ./redis/data/7006:/data
+    command: redis-server /usr/local/etc/redis/redis.conf
