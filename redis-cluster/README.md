@@ -35,4 +35,4 @@ docker network inspect redis-cluster
 ```
 
 #### redis 节点集群
-docker run --rm -it zvelo/redis-trib create --replicas 1 172.20.0.5:7001 172.20.0.5:7002 192.168.0.6:7003 192.168.0.6:7004 192.168.0.7:7005 192.168.0.7:7006
+docker run --rm -it zvelo/redis-trib create --replicas 1 192.168.0.5:7001 192.168.0.5:7002 192.168.0.6:7003 192.168.0.6:7004 192.168.0.7:7005 192.168.0.7:7006
