@@ -118,6 +118,8 @@ services:
       - ./logstash/conf/logstash-filebeat.conf:/usr/share/logstash/conf/logstash-filebeat.conf
     environment:
       - elasticsearch.hosts=http://es-master:9200
+      # 解决logstash监控连接报错
+      - xpack.monitoring.elasticsearch.hosts=http://es-master:9200
     ports:
       - 5044:5044
     depends_on:
@@ -132,7 +134,7 @@ services:
     restart: always
     working_dir: /home
     # 编译
-    build: ..
+    build: .
     volumes:
       - ./logs:/logs
     depends_on:
