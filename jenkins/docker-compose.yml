@@ -1,0 +1,15 @@
+version: "3"
+services:
+  mysql:
+    container_name: lmay-jenkins
+    image: jenkins/jenkins:lts
+    environment:
+      JAVA_OPTS: '-Djava.util.logging.config.file=/var/jenkins_home/log.properties'
+      TZ: Asia/Shanghai
+    restart: always
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - ./data:/var/jenkins_home
+      - ./data/docker.sock:/var/run/docker.sock
