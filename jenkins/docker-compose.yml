@@ -2,7 +2,7 @@ version: "3"
 services:
   mysql:
     container_name: lmay-jenkins
-    image: jenkins/jenkins:lts
+    image: jenkinsci/blueocean:latest
     environment:
       JAVA_OPTS: '-Djava.util.logging.config.file=/var/jenkins_home/log.properties'
       TZ: Asia/Shanghai
