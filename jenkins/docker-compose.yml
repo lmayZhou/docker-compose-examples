@@ -13,3 +13,5 @@ services:
     volumes:
       - ./data:/var/jenkins_home
       - ./data/docker.sock:/var/run/docker.sock
+
+# chown -R 1000:1000 /home/services/jenkins/data/
