@@ -5,7 +5,7 @@ FROM mysql:8.0.16
 MAINTAINER lmay Zhou <lmay@lmaye.com>
 
 # 配置MySql
-ENV MYSQL_DATABASE sw-docker
+ENV MYSQL_DATABASE lmay-docker
 ENV MYSQL_ROOT_PASSWORD root
 ENV MYSQL_ROOT_HOST '%'
 
