@@ -26,13 +26,6 @@ if [ -d "./rabbitmq/" ]; then
 chmod 777 ./rabbitmq/data/
 fi
 echo -e "${BLUE_COLOR}===> directory authorize success.${RES}"
-
-# 移动配置文件
-echo -e "${BLUE_COLOR}---> move [rabbitmq]config file start.${RES}"
-if [ -f "./rabbitmq.conf" ]; then
-mv ./rabbitmq.conf ./rabbitmq
-fi
-echo -e "${BLUE_COLOR}===> move config files success.${RES}"
 echo -e "${GREEN_COLOR}>>>>>>>>>>>>>>>>>> The End <<<<<<<<<<<<<<<<<<${RES}"
 
 # 部署项目
