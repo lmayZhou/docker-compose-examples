@@ -1,0 +1,16 @@
+version: "3"
+services:
+  rabbitmq:
+    container_name: lmay-rabbitmq
+    image: rabbitmq:latest
+    build: .
+    restart: on-failure
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=root
+    volumes:
+      - ./rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config
+      - ./rabbitmq/data:/var/lib/rabbitmq
