@@ -21,7 +21,7 @@ Docker 容器部署各应用服务实践学习实例集合，部署脚本仅供�
             -- redis-master-slave1      # 节点1
             -- redis-master-slave2      # 节点2
             -- redis-master-slave3      # 节点3
-        - zookeeper             # Zookeeper    
+        - zookeeper                     # Zookeeper    
 
 ### 参与贡献
  1. 2019年08月15日: 构建 docker-compose-examples, es-nodes-stand-alone, es-nodes-cluster 等服务 [Service]
