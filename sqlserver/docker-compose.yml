@@ -1,0 +1,16 @@
+version: "3"
+services:
+  sqlserver:
+    container_name: lmay-sqlserver
+    image: microsoft/mssql-server-linux:2017-latest
+    ports:
+      - 1433:1433
+    volumes:
+      - ./sqlserver/mssql:/var/opt/mssql
+      - ./sqlserver/data:/var/lib/rabbitmq
+    restart: always
+    environment:
+      #接受最终用户许可协议
+      - ACCEPT_EULA=Y
+      #SA用户密码
+      - SA_PASSWORD=root@123
