@@ -19,7 +19,7 @@ services:
 
   nacos:
     container_name: lmay-nacos
-    image: nacos/nacos-server:latest
+    image: nacos/nacos-server:1.1.4
     restart: on-failure
     ports:
       - 8848:8848
