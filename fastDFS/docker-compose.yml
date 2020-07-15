@@ -1,0 +1,32 @@
+version: "3"
+services:
+  tracker:
+    # 容器名称
+    container_name: lmay-tracker
+    # 镜像
+    image: season/fastdfs:latest
+    # 重启机制: no: 禁止自动重启容器(默认); always: 无论如何容器都会重启; on-failure: 当出现on-failure报错时, 容器重新启动;
+    restart: no
+    # 端口
+    ports:
+      - 22122:22122
+    # 持久化挂载
+    volumes:
+      - ./tracker/data:/fastdfs/tracker/data
+
+  storage:
+    # 容器名称
+    container_name: lmay-storage
+    # 镜像
+    image: season/fastdfs:latest
+    # 重启机制: no: 禁止自动重启容器(默认); always: 无论如何容器都会重启; on-failure: 当出现on-failure报错时, 容器重新启动;
+    restart: no
+    environment:
+      TRACKER_SERVER: lmay-tracker:22122
+    # 端口
+    ports:
+      -
+    # 持久化挂载
+    volumes:
+      - ./storage/data:/fastdfs/tracker/data
+      - ./storage/path:/fastdfs/store_path
