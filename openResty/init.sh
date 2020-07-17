@@ -30,8 +30,8 @@ mv ./default.conf ./conf.d
 fi
 
 if [ -f "./50x.html" ] && [ -f "./index.html" ]; then
-mv ./50x.html ./html/50x.html
-mv ./index.html ./html/index.html
+mv ./50x.html ./html
+mv ./index.html ./html
 fi
 echo -e "${BLUE_COLOR}===> move config files success.${RES}"
 echo -e "${GREEN_COLOR}>>>>>>>>>>>>>>>>>> The End <<<<<<<<<<<<<<<<<<${RES}"
