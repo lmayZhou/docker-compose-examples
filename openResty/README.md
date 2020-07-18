@@ -1,20 +1,27 @@
 # docker-compose-examples
 
 #### 介绍
-FastDFS 文件存储服务
+OpenResty
 
-#### 部署架构
-因: init.sh编码问题, 直接复制到Linux系统中无法识别。所以建议手动创建一个shell脚本, 然后把写好的脚本内容copy进去来实现自动部署;
+#### Linux 安装方式
 
 ```shell script
-# 创建脚本
-[root@localhost fastdfs]# vi init.sh
-# 脚本赋权
-[root@localhost fastdfs]# chmod u+x init.sh
-# 开启端口
-[root@localhost fastdfs]# firewall-cmd --zone=public --add-port=22122/tcp --permanent
-[root@localhost fastdfs]# firewall-cmd --zone=public --add-port=23000/tcp --permanent
-[root@localhost fastdfs]# firewall-cmd --reload
+# yum 安装pcre、openssl库
+[root@localhost openresty]# yum install pcre-devel openssl-devel gcc curl
+# CentOS 系统中添加 openresty 仓库
+[root@localhost openresty]# wget https://openresty.org/package/centos/openresty.repo
+[root@localhost openresty]# mv openresty.repo /etc/yum.repos.d/
+[root@localhost openresty]# yum check-update
+[root@localhost openresty]# yum install -y openresty-resty
+# 列出所有 openresty 仓库里头的软件包：
+[root@localhost openresty]# yum --disablerepo="*" --enablerepo="openresty" list available
+# 查看安装目录
+[root@localhost openresty]# whereis openresty
+# 启动服务
+[root@localhost openresty]# service openresty start
+# 开放端口
+[root@localhost openresty]# firewall-cmd --zone=public --add-port=80/tcp --permanent
+[root@localhost openresty]# firewall-cmd --reload
 ```
 
 ### 参与贡献
