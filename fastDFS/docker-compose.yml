@@ -1,10 +1,10 @@
 version: "3"
 services:
-  tracker:
+  fastdfs-tracker:
     # 容器名称
-    container_name: lmay-tracker
+    container_name: fastdfs-tracker
     # 镜像:版本
-    image: season/fastdfs:latest
+    image: season/fastdfs:1.2
     # 必须是host, 原因是当上传文件时，tracker会把storage的IP和端口发给client，如果是bridge模式，则发送的是内网IP，client无法访问到。
     network_mode: host
     # 重启机制
@@ -20,9 +20,9 @@ services:
     volumes:
       - ./tracker/data:/fastdfs/tracker/data
 
-  storage:
-    container_name: lmay-storage
-    image: season/fastdfs:latest
+  fastdfs-storage:
+    container_name: fastdfs-storage
+    image: season/fastdfs:1.2
     network_mode: host
     restart: on-failure
     command: storage
@@ -34,4 +34,16 @@ services:
       - ./storage/data:/fastdfs/storage/data
       - ./storage/path:/fastdfs/store_path
     depends_on:
-      - tracker
+      - fastdfs-tracker
+
+  fastdfs-nginx:
+    container_name: fastdfs-nginx
+    image: season/fastdfs:1.2
+    network_mode: host
+    restart: on-failure
+    command: nginx
+    volumes:
+      - ./conf/nginx.conf:/etc/nginx/conf/nginx.conf
+      - ./storage/path:/fastdfs/store_path
+    environment:
+      - TRACKER_SERVER=192.168.0.10:22122

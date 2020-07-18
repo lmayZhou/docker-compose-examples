@@ -25,6 +25,13 @@ if [ ! -d "./storage/" ]; then
 mkdir -p ./storage/data ./storage/path
 fi
 echo -e "${BLUE_COLOR}===> create directory success.${RES}"
+
+# 移动配置文件
+echo -e "${BLUE_COLOR}---> move [nginx.conf]config file start.${RES}"
+if [ -f "./nginx.conf" ]; then
+mv ./nginx.conf ./conf
+fi
+echo -e "${BLUE_COLOR}===> move config files success.${RES}"
 echo -e "${GREEN_COLOR}>>>>>>>>>>>>>>>>>> The End <<<<<<<<<<<<<<<<<<${RES}"
 
 # 部署项目
