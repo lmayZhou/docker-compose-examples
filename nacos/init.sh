@@ -10,7 +10,7 @@ RES="\033[0m"
 echo -e "${BLUE_COLOR}# ######################################################################${RES}"
 echo -e "${BLUE_COLOR}#                       Docker Compose Shell Script                    #${RES}"
 echo -e "${BLUE_COLOR}#                       Blog: www.lmaye.com                            #${RES}"
-echo -e "${BLUE_COLOR}#                       Email: lmaye@lmaye.com                         #${RES}"
+echo -e "${BLUE_COLOR}#                       Email: lmay@lmaye.com                          #${RES}"
 echo -e "${BLUE_COLOR}# ######################################################################${RES}"
 
 # 创建目录
