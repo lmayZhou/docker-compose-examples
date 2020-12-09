@@ -1,0 +1,10 @@
+version: "3"
+services:
+  solr:
+    build: ikanalyzer
+    restart: always
+    container_name: solr
+    ports:
+      - 8983:8983
+    volumes:
+      - ./solrdata:/opt/solrdata
