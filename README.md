@@ -31,6 +31,7 @@ Docker 容器部署各应用服务实践学习实例集合，部署脚本仅供�
  5. 2019年12月05日: 构建 Nacos 服务 [Service]
  6. 2019年12月06日: 构建 RabbitMQ 服务, 更新 README.md 文档 [Service/文档]
 
+
 ### 相关文章
 #### 『 Centos 7 快速教程 』
 - [Centos 7 静态IP设置](https://www.lmaye.com/2017/12/22/20180809103359/)
