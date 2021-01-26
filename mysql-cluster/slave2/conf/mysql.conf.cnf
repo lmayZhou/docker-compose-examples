@@ -14,6 +14,9 @@ log_bin = /var/log/mysql/mysql-bin.log
 # 中继日志：存储所有主库TP过来的binlog事件主库binlog：记录主库发生过的修改事件
 relay-log = /var/log/mysql/mysql-relay-bin.log
 
+character_set_server=utf8mb4
+collation-server=utf8mb4_general_ci
+
 # 要同步的库
 binlog_do_db = cluster_db
 # 多库同步
