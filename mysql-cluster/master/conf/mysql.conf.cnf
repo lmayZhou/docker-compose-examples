@@ -16,3 +16,6 @@ binlog_format = mixed
 
 # 要同步的库
 binlog_do_db = cluster_db
+# 多库同步
+#binlog_do_db = cluster_db1
+#binlog_do_db = cluster_db2

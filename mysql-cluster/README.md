@@ -58,3 +58,13 @@ docker exec -it mysql-master bash
 docker exec -it mysql-slave1 bash
 docker exec -it mysql-slave2 bash
 ```
+
+#### 指定用户给某库权限
+```shell
+# 查看用户权限
+show grants for db_cluster;
+# 授权
+GRANT ALL PRIVILEGES ON `cluster\_db2`.* TO db_cluster;
+# 更新 
+flush privileges ;
+```
