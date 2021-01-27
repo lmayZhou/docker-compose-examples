@@ -66,5 +66,5 @@ show grants for db_cluster;
 # 授权
 GRANT ALL PRIVILEGES ON `cluster\_db2`.* TO db_cluster;
 # 更新 
-flush privileges ;
+flush privileges;
 ```
