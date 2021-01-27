@@ -16,6 +16,8 @@ relay-log = /var/log/mysql/mysql-relay-bin.log
 
 character_set_server=utf8mb4
 collation-server=utf8mb4_general_ci
+init-connect='SET NAMES utf8mb4'
+init_connect='SET collation_connection=utf8mb4_general_ci'
 
 # 要同步的库
 binlog_do_db = cluster_db
