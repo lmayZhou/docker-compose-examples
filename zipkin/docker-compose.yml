@@ -1,0 +1,12 @@
+version: "3"
+services:
+  zipkin:
+    container_name: lmay-zipkin
+    image: openzipkin/zipkin:2.21
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - STORAGE_TYPE=elasticsearch
+      - ES_HOSTS=es-master:9200
+    ports:
+      - 9411:9411
