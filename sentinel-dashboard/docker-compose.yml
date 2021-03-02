@@ -1,0 +1,16 @@
+version: "3"
+services:
+  sentinel-dashboard:
+    container_name: sentinel-dashboard
+    image: sentinel-dashboard:1.8.1
+    restart: on-failure
+    build: .
+    environment:
+      JAVA_OPTS: "-Dserver.port=8080
+      -Dproject.name=sentinel-dashboard
+      -Dcsp.sentinel.dashboard.server=localhost:8080
+      -Dsentinel.dashboard.auth.username=sentinel
+      -Dsentinel.dashboard.auth.password=123456"
+    ports:
+      - 8000:8080
+      - 8719:8719
