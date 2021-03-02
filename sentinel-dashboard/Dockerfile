@@ -6,4 +6,5 @@ ADD sentinel-dashboard-1.8.1.jar sentinel-dashboard-1.8.1.jar
 # 端口
 EXPOSE 8080
 #指定容器启动程序及参数 <ENTRYPOINT> "<CMD>"
-ENTRYPOINT ["java", "-jar", "sentinel-dashboard-1.8.1.jar"]
+CMD java ${JAVA_OPTS} -jar sentinel-dashboard-1.8.1.jar
+#ENTRYPOINT ["java", "-jar", "sentinel-dashboard-1.8.1.jar"]
