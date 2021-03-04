@@ -1,0 +1,35 @@
+version: "3"
+services:
+  prometheus:
+    container_name: prometheus
+    image: quay.io/prometheus/prometheus:latest
+    volumes:
+      - ./monitor/prometheus.yml:/etc/prometheus/prometheus.yml
+    command: "--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus"
+    ports:
+      - 9090:9090
+    depends_on:
+      - exporter
+
+  exporter:
+    container_name: node-exporter
+    image: prom/node-exporter:latest
+    ports:
+      - 9100:9100
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=123456
+      - GF_INSTALL_PLUGINS=alexanderzobnin-zabbix-app
+    restart: on-failure
+    volumes:
+      - grafana-etc:/etc/grafana/
+      - $GRAFANA_DIR/data:/var/lib/grafana:rw
+      - $GRAFANA_DIR$GRAFANA_plugins:/var/lib/grafana/plugins:rw
+      - /etc/localtime:/etc/localtime
+    depends_on:
+      - prometheus
