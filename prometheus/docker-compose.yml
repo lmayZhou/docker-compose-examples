@@ -1,0 +1,70 @@
+version: "3"
+services:
+  # Prometheus负责收集数据
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    hostname: prometheus
+    restart: "no"
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./config/node_down.yml:/etc/prometheus/node_down.yml
+    ports:
+      - 9090:9090
+    networks:
+      - monitor
+
+  # AlertManager负责告警，它将以容器方式运行在所有host上
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager
+    hostname: alertmanager
+    restart: "no"
+    volumes:
+      - ./config/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    ports:
+      - 9093:9093
+    networks:
+      - monitor
+
+  # Grafana负责展示数据
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    hostname: grafana
+    restart: "no"
+    ports:
+      - 3000:3000
+    networks:
+      - monitor
+
+  # Node Exporter负责收集host硬件和操作系统数据。它将以容器方式运行在所有host上
+  node-exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    container_name: node-exporter
+    hostname: node-exporter
+    restart: "no"
+    ports:
+      - 9091:9100
+    networks:
+      - monitor
+
+  # cAdvisor负责收集容器数据，它将以容器方式运行在所有host上
+  cadvisor:
+    image: google/cadvisor:latest
+    container_name: cadvisor
+    hostname: cadvisor
+    restart: "no"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - 9092:8080
+    networks:
+      - monitor
+
+networks:
+  monitor:
+    driver: bridge
