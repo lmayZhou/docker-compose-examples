@@ -6,7 +6,7 @@ global:
   # 发邮件的邮箱用户名
   smtp_auth_username: "java_zlm@163.com"
   # 发邮件的邮箱密码
-  smtp_auth_password: "YouGuess"　　
+  smtp_auth_password: "YouGuess"
   # TLS验证　
   smtp_require_tls: false
 
