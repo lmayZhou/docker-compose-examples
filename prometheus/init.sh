@@ -14,37 +14,18 @@ echo -e "${BLUE_COLOR}#                       Email: lmay@lmaye.com             
 echo -e "${BLUE_COLOR}# ######################################################################${RES}"
 
 # 创建目录
-echo -e "${BLUE_COLOR}---> create [mysql]directory start.${RES}"
-if [ ! -d "./mysql/" ]; then
-mkdir -p ./mysql/data ./mysql/init
-fi
-
-echo -e "${RED_COLOR}---> create [nacos]directory start.${RES}"
-if [ ! -d "./nacos/" ]; then
-mkdir -p ./nacos/logs
+echo -e "${BLUE_COLOR}---> create [config]directory start.${RES}"
+if [ ! -d "./config/" ]; then
+mkdir ./config
 fi
 echo -e "${BLUE_COLOR}===> create directory success.${RES}"
 
-# 目录授权(data/logs 都要授读/写权限)
-echo -e "${BLUE_COLOR}---> directory authorize start.${RES}"
-if [ -d "./mysql/" ]; then
-chmod 777 ./mysql/data/
-fi
-echo -e "${BLUE_COLOR}===> directory authorize success.${RES}"
-
 # 移动配置文件
-echo -e "${BLUE_COLOR}---> move [mysql]config file start.${RES}"
-if [ -f "./my.cnf" ]; then
-mv ./my.cnf ./mysql
-fi
-# 数据库初始化脚本
-if [ -f "./nacos-db.sql" ]; then
-mv ./nacos-db.sql ./mysql/init
-fi
-
-echo -e "${RED_COLOR}---> move [nacos]config file start.${RES}"
-if [ -f "./custom.properties" ]; then
-mv ./custom.properties ./nacos
+echo -e "${BLUE_COLOR}---> move config file start.${RES}"
+if [ -f "./alertmanager.yml" ] && [ -f "./node_down.yml" ] && [ -f "./prometheus.yml" ]; then
+mv ./alertmanager.yml ./config
+mv ./node_down.yml ./config
+mv ./prometheus.yml ./config
 fi
 echo -e "${BLUE_COLOR}===> move config files success.${RES}"
 echo -e "${GREEN_COLOR}>>>>>>>>>>>>>>>>>> The End <<<<<<<<<<<<<<<<<<${RES}"
