@@ -23,13 +23,13 @@ scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
   - job_name: 'prometheus'
     static_configs:
-  - targets: [ '192.168.30.180:9090' ]
+      - targets: [ '192.168.30.180:9090' ]
 
-      - job_name: 'cadvisor'
-        static_configs:
-          - targets: [ '192.168.30.180:9092' ]
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: [ '192.168.30.180:9092' ]
 
-      - job_name: 'node'
-        scrape_interval: 8s
-        static_configs:
-          - targets: [ '192.168.30.180:9091' ]
+  - job_name: 'node'
+    scrape_interval: 8s
+    static_configs:
+      - targets: [ '192.168.30.180:9091' ]
