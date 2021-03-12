@@ -1,0 +1,19 @@
+version: "3"
+services:
+  canal:
+    image: canal/canal-server:v1.1.4
+    container_name: canal
+    ports:
+      - 11111:11111
+    environment:
+      - canal.instance.mysql.slaveId=12
+      - canal.auto.scan=false
+      - canal.destinations=nly-v1
+      - canal.instance.master.address=192.168.30.240:33060
+      - canal.instance.dbUsername=root
+      - canal.instance.dbPassword=root@2020
+      - canal.mq.topic=nly-v1
+      - canal.instance.filter.regex=esen_approval.apt_approval
+    volumes:
+      - ./conf/:/admin/canal-server/conf/
+      - ./logs/:/admin/canal-server/logs/
