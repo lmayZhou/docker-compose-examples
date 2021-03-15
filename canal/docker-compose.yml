@@ -13,7 +13,10 @@ services:
       - canal.instance.dbUsername=root
       - canal.instance.dbPassword=root@2020
       - canal.mq.topic=test
-      - canal.instance.filter.regex=esen_approval.apt_approval
+      # table regex .*\\..*表示监听所有表 也可以写具体的表名用,隔开
+      - canal.instance.filter.regex=.*\\..*,test_db\\.user
+      # mysql 数据解析表的黑名单，多个表用，隔开
+      - canal.instance.filter.black.regex=
     volumes:
       - ./conf/:/admin/canal-server/conf/
       - ./logs/:/admin/canal-server/logs/
