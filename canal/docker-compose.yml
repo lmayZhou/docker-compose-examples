@@ -8,11 +8,11 @@ services:
     environment:
       - canal.instance.mysql.slaveId=12
       - canal.auto.scan=false
-      - canal.destinations=nly-v1
+      - canal.destinations=test
       - canal.instance.master.address=192.168.30.240:33060
       - canal.instance.dbUsername=root
       - canal.instance.dbPassword=root@2020
-      - canal.mq.topic=nly-v1
+      - canal.mq.topic=test
       - canal.instance.filter.regex=esen_approval.apt_approval
     volumes:
       - ./conf/:/admin/canal-server/conf/
