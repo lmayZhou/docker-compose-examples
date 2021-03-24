@@ -8,16 +8,16 @@ services:
     environment:
       - canal.instance.mysql.slaveId=12
       - canal.auto.scan=false
-      - canal.destinations=test
-      - canal.instance.master.address=192.168.30.240:33060
+      - canal.destinations=example
+      - canal.instance.master.address=192.168.30.180:3306
       - canal.instance.dbUsername=root
-      - canal.instance.dbPassword=root@2020
-      - canal.instance.defaultDatabaseName=ms_user
+      - canal.instance.dbPassword=root
+#      - canal.instance.defaultDatabaseName=ms_user
       - canal.mq.topic=test
       # table regex .*\\..*表示监听所有表 也可以写具体的表名用,隔开
       - canal.instance.filter.regex=.*\\..*,test_db\\.user
       # mysql 数据解析表的黑名单，多个表用，隔开
       - canal.instance.filter.black.regex=
     volumes:
-      - ./conf/:/admin/canal-server/conf/
+#      - ./conf/:/admin/canal-server/conf/
       - ./logs/:/admin/canal-server/logs/
