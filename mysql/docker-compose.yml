@@ -12,7 +12,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./mysql/my.cnf:/etc/my.cnf
-      - ./mysql/data:/var/lib/mysql
+      - ./conf/my.cnf:/etc/my.cnf
+      - ./data:/var/lib/mysql
       # 初始化数据脚本
-      # - ./mysql/init:/docker-entrypoint-initdb.d/
+      # - ./init:/docker-entrypoint-initdb.d/
