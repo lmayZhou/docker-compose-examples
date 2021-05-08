@@ -2,11 +2,16 @@ version: "3"
 services:
   redis:
     container_name: lmay-redis
-    image: redis:5.0.5
+    image: redis:6.2.3
     restart: always
-    command: redis-server --requirepass 123456
+    # Redis 启动关联配置文件
+    command: redis-server /redis.conf
     ports:
       - 6379:6379
+    environment:
+      # 设置环境变量
+      TZ: Asia/Shanghai
+      LANG: en_US.UTF-8
     volumes:
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
-      - ./redis/data:/data
+      - ./conf/redis.conf:/redis.conf:rw
+      - ./data:/data:rw
