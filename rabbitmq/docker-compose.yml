@@ -2,8 +2,7 @@ version: "3"
 services:
   rabbitmq:
     container_name: lmay-rabbitmq
-    image: rabbitmq:latest
-    build: .
+    image: rabbitmq:3.8.16-management
     restart: on-failure
     ports:
       - 5672:5672
