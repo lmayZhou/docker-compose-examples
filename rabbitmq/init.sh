@@ -14,16 +14,16 @@ echo -e "${BLUE_COLOR}#                       Email: lmay@lmaye.com             
 echo -e "${BLUE_COLOR}# ######################################################################${RES}"
 
 # 创建目录
-echo -e "${BLUE_COLOR}---> create [rabbitmq]directory start.${RES}"
-if [ ! -d "./rabbitmq/" ]; then
-mkdir -p ./rabbitmq/data
+echo -e "${BLUE_COLOR}---> create directory start.${RES}"
+if [ ! -d "./data/" ]; then
+mkdir -p ./data
 fi
 echo -e "${BLUE_COLOR}===> create directory success.${RES}"
 
 # 目录授权(data/logs 都要授读/写权限)
 echo -e "${BLUE_COLOR}---> directory authorize start.${RES}"
-if [ -d "./rabbitmq/" ]; then
-chmod 777 ./rabbitmq/data/
+if [ -d "./data/" ]; then
+chmod 777 ./data/
 fi
 echo -e "${BLUE_COLOR}===> directory authorize success.${RES}"
 echo -e "${GREEN_COLOR}>>>>>>>>>>>>>>>>>> The End <<<<<<<<<<<<<<<<<<${RES}"
